@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSA. propriedades</title>
+    <title>PSA propriedades</title>
     <style>
 
         /* Definição de variáveis: facilita a menutenção das cores em todo o projeto */
@@ -50,6 +50,14 @@
             margin: 0 0 60px 0;
             text-transform: uppercase;
             font-weight: 800;
+        }
+
+        .text-side h2 {
+            color: #aaaaaa;
+            font-size: 1.2rem;
+            margin-top: -40px; /* Puxa o h2 para perto do h1 */
+            margin-bottom: 30px;
+            font-weight: 400;
         }
 
         /* Cores de destaque: aplica as variáveis neon nos spans especifícos do título */ 
@@ -120,27 +128,70 @@
             transform: scale(1.05);  /* Aumenta levemente o botão */
         }
 
-        /* Lado da imagem: estilização visual e moldura */
+        /* Lado da imagem: uma coluna à direita */
         .image-side {
             flex: 1;
             min-width: 350px;
+            max-width: 550px;
             position: relative;
             display: flex;  /* Transforma em flexbox */
             flex-direction: column;  /* Coloca uma imagem em cima da outra */
-            gap: 30px;  /* Cria o espaço entre os mapas */
+            gap: 40px;  /* Cria o espaço entre os mapas */
+        } 
+
+        /* Container da imagem e legenda */
+        .image-side figure {
+            margin: 0;  /* Remove margens padrão do navegador */
+            width: 100%;
+            display: flex;  /* Transforma em flexbox */
+            flex-direction: column;  /* Coloca uma imagem em cima da outra */
+            position: relative; /* ESSENCIAL: Torna a figura o ponto de referência da moldura */
+            z-index: 1;         /* Garante que a figura fique acima da moldura */
         }
 
-        .image-side img {
+        .image-side figure img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
+            border-radius: 20px 20px 0 0;  /* Arredonda apenas os cantos de cima */
             border: 3px solid rgba(0, 229, 255, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
-                        0 0 30px rgba(0, 229, 255, 0.1);
+            border-bottom: none;  /* Remove a borda de baixo para colar na legenda */
+            display: block;  /* Remove espaços vazios abaixo da imagem */
+
         }
 
+        /* Estilização da Legenda (Figcaption) */
+        .image-side figcaption {
+            background: rgba(0, 229, 255, 0.1);  /* Fundo sutil azulado */
+            color: var(--electric-blue);
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            border: 3px solid rgba(0, 229, 255, 0.3);
+            border-top: none;
+            border-radius: 0 0 20px 20px;  /* Arredonda apenas os cantos de baixo */
+            text-align: center;
+            font-style: italic;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* NOVA MOLDURA DECORATIVA: Uma para cada figura */
+        .image-side figure::after {
+            content: '';
+            position: absolute;
+            top: -15px;         /* Ajuste fino da posição (um pouco menor que antes) */
+            right: -15px;       /* Ajuste fino da posição */
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--electric-blue);
+            border-radius: 20px;
+            z-index: -1;        /* Coloca a moldura ATRÁS da figura */
+            opacity: 0.3;       /* Mantém a transparência sutil */
+            pointer-events: none; /* Garante que a moldura não atrapalhe cliques na imagem */
+        }
+
+
+
         /* Elemento decorativo: moldura vazada atrás da imagem */
-        .image-side::after {
+        /*.image-side::after {
             content: '';
             position: absolute;
             top: -20px;
@@ -151,13 +202,22 @@
             border-radius: 20px;
             z-index: -1;
             opacity: 0.3;
-        }
+        }*/
+
+
 
         /* Responsividade: ajustes para tablets e celulares */
         @media (max-width: 768px) {
             .hero-container { text-align: center; justify-content: center; }
             .text-side h1 { font-size: 2.5rem; }
             .btn-group { justify-content: center; }
+
+            /* NOVO AJUSTE: Remove o deslocamento da moldura em telas pequenas */
+            .image-side figure::after {
+                top: 0;
+                right: 0;
+                border: none; /* Opcional: remover a moldura em mobile para limpar o visual */
+            }
         }
     </style>
 </head>
@@ -206,11 +266,18 @@
             </div>
         </div>
 
-        <!-- Mapa  -->
+        <!-- Mapas  -->
         <div class="image-side">
-            <img src="imgs/mapa_flyer.png" alt="Mapa Manancial de Louveira">
-            <img src="imgs/Mapa_corrego_Feta.png" alt="Mapa corrégo Fetá">
-            <img src="imgs/propriedades_classificadas.jpg" alt="Mapa propriedades classificadas">
+            <figure>
+                <img src="imgs/Mapa_corrego_Feta.png" alt="Mapa sub corrégo Fetá">
+                <figcaption>Figura 1: Mapa do corrégo Fetá.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="imgs/propriedades_classificadas.jpg" alt="Mapa propriedades classificadas">
+                <figcaption>Figura 2: Mapa das propriedades rurais de Louveira/SP classificadas.</figcaption>
+            </figure>
+            
         </div>
 
     </section>
