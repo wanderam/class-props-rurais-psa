@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSA propriedades</title>
+    <style>
+
+        /* Definição de variáveis: facilita a menutenção das cores em todo o projeto */
+        :root {
+            --neon-green: #39FF14;
+            --electric-blue: #00E5FF;
+            --dark-navy: #0A192F;
+        }
+
+        /* Reset e configuração global: centraliza o conteúdo vertical e horizontalmente na tela */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    /* 'Segoe UI', Roboto, sans-serif */
+            background-color: var(--dark-navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;  /* Ocupa 100% da altura da janela visual */
+        }
+        /* Container Principal: Define o layout em duas colunas (texto e imagem) */
+        .hero-container {
+            display: flex;
+            flex-wrap: wrap;  /* Permite que os itens "quebrem" para a linha de baixo em telas menores */
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            padding: 40px;
+            gap: 50px;
+        }
+
+        /* Lado do texto: controla a largura e tipografia do contéudo escrito */
+        .text-side {
+            flex: 1;
+            min-width: 350px;
+            align-self: flex-start;  /* Força o alinhamento no topo do container */
+            padding-top: 20px;  /* Pequeno espaço no topo */
+        }
+
+        .text-side h1 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin: 0 0 60px 0;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* Cores de destaque: aplica as variáveis neon nos spans especifícos do título */ 
+        .text-side h1 span.brand { color: var(--neon-green); }
+        .text-side h1 span.accent { color: var(--electric-blue); }
+
+        /* Frase de efeito logo abaixo do H1 */
+        .text-side p {
+            font-size: 1.4rem;
+            color: var(--electric-blue);
+            margin-bottom: 40px;
+            max-width: 500px;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        /* Estilização tópicos */
+        .topicos-group {
+            font-size: 1.0rem;
+            color: #aaaaaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column; /* Coloca um abaixo do outro */
+            gap: 12px;             /* Define o espaço exato entre eles */
+            margin-top: 50px;      /* Espaço entre o parágrafo anterior e a lista */
+            margin-bottom: 50px;
+        }
+
+        /* Pequeno parágrafo */
+        .breve-paragrafo p {
+            font-size: 1.05rem;
+            color: #CCD6F6;
+            margin-bottom: 40px;
+            max-width: 650px;
+            text-align: left;
+            text-transform: none;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+            text-indent: 0px;
+        }
+
+        
+        /* Botões: estilização da chamada para ação (CTA) */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;  /* Transição suave para o efeito de hover */
+        }
+
+        .btn-primary {
+            background-color: var(--neon-green);
+            color: var(--dark-navy);
+            border: 2px solid var(--neon-green);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);  /* Efeito de brilho externo */
+            transform: scale(1.05);  /* Aumenta levemente o botão */
+        }
+
+        /* Lado da imagem: estilização visual e moldura */
+        .image-side {
+            flex: 1;
+            min-width: 350px;
+            position: relative;
+            display: flex;  /* Transforma em flexbox */
+            flex-direction: column;  /* Coloca uma imagem em cima da outra */
+            gap: 30px;  /* Cria o espaço entre os mapas */
+        }
+
+        .image-side img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            border: 3px solid rgba(0, 229, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                        0 0 30px rgba(0, 229, 255, 0.1);
+        }
+
+        /* Elemento decorativo: moldura vazada atrás da imagem */
+        .image-side::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--electric-blue);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Responsividade: ajustes para tablets e celulares */
+        @media (max-width: 768px) {
+            .hero-container { text-align: center; justify-content: center; }
+            .text-side h1 { font-size: 2.5rem; }
+            .btn-group { justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero-container">
+
+        <!-- Texto explicativo do proejto -->
+        <div class="text-side">
+
+            <!-- Título principal -->
+            <h1><span class="brand">Estudo: Classificação e valoração das propriedades rurais do município para Pagamento de Serviços Ambientais (PSA)</span>  <!-- <br><span class="accent">Preservar para não recuperar</span></h1> -->
+
+            <h2>Estudo realizado em Louveira/SP</h2>
+            
+            <div class="breve-paragrafo">
+                <p>
+                    O projeto realizado pelo Instituto Agronômico (IAC) para o município de Louveira/SP,
+                    realizou o mapeamento dos usos da terra, identificou e mapeou a cobertura vegetal natural,
+                    organizou a base fundiária, dos rios, lagos e nascentes, definiu as
+                    Áreas de Preservação Permanentes (APPs) e Reserva Legal para
+                    cada propriedade rural. Com essas informações em mãos, realizou a
+                    classificação das propriedades rurais para fins de
+                    Pagamento por Serviços Ambientais (PSA), como pode ser visto no mapa ao lado.
+                </p>
+
+                                  
+            </div>
+
+
+            <!-- Tópicos -->
+            <div class="topicos-group">
+                <div>1º Mapeamento dos usos da terra do município</div>
+                <div>2º Definição das Áreas de Preservação Permanentes (APPs)</div>
+                <div>3º Mapeamento das áreas prioritárias para recomposição</div>
+                <div>4º Classificação das propriedades rurais para fins de PSA</div>
+            </div>
+
+
+            <!-- Botão -->
+            <div class="btn-group">
+
+                <a href="https://labgeoiac.github.io/louveira/PSA_Louveira.html" class="btn btn-primary" target="_blank">Ver exemplo de Louveira</a>
+
+            </div>
+        </div>
+
+        <!-- Mapa  -->
+        <div class="image-side">
+            <img src="imgs/mapa_flyer.png" alt="Mapa Manancial de Louveira">
+            <img src="imgs/Mapa_corrego_Feta.png" alt="Mapa corrégo Fetá">
+            <img src="imgs/propriedades_classificadas.jpg" alt="Mapa propriedades classificadas">
+        </div>
+
+    </section>
+
+</body>
+</html>
